@@ -11,17 +11,21 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --gold-dim: #7a6230;
-    --cream: #F0E6CC;
-    --cream-dim: #b8a98a;
-    --dark: #0C0A08;
-    --dark-2: #141210;
-    --dark-3: #1c1915;
-    --dark-4: #242018;
-    --border: rgba(201,168,76,0.18);
-    --border-bright: rgba(201,168,76,0.45);
+    --accent:        #6A1211;
+    --accent-light:  #8B1A19;
+    --accent-dim:    #450c0b;
+    --cream:         #1B1B1B;
+    --cream-dim:     #3a3a3a;
+    --muted:         #5a5a5a;
+    --dark:          #D9D0C7;
+    --dark-2:        #CFC6BC;
+    --dark-3:        #C4BBB2;
+    --dark-4:        #B9B0A8;
+    --border:        rgba(27,27,27,0.15);
+    --border-bright: rgba(27,27,27,0.35);
+    --gold:          #6A1211;
+    --gold-light:    #8B1A19;
+    --gold-dim:      #5a5a5a;
   }
 
   html { scroll-behavior: smooth; }
@@ -33,6 +37,25 @@
     font-weight: 300;
     line-height: 1.7;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+  }
+
+  nav, .hero, .verse-strip, section, .music-section, .members-section,
+  .footer-section, .divider, [id], .mobile-overlay {
+    position: relative;
+    z-index: 1;
   }
 
   /* NAV */
@@ -44,7 +67,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 4rem;
-    background: linear-gradient(to bottom, rgba(12,10,8,0.95) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(217,208,199,0.95) 0%, transparent 100%);
     backdrop-filter: blur(2px);
   }
 
@@ -53,7 +76,7 @@
     font-weight: 900;
     font-size: 1.3rem;
     letter-spacing: 0.12em;
-    color: var(--gold);
+    color: var(--cream);
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -81,7 +104,7 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(12,10,8,0.98);
+    background: rgba(217,208,199,0.98);
     z-index: 9998;
     flex-direction: column;
     align-items: center;
@@ -125,8 +148,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 70%);
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(106,18,17,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 100%, rgba(106,18,17,0.06) 0%, transparent 70%);
   }
 
   .hero-cross {
@@ -194,8 +217,8 @@
   .btn-primary {
     display: inline-block;
     padding: 0.85rem 2.2rem;
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--accent);
+    color: #D9D0C7;
     text-decoration: none;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
@@ -204,7 +227,7 @@
     transition: background 0.3s, transform 0.2s;
   }
 
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
 
   .btn-outline {
     display: inline-block;
@@ -321,7 +344,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 60%);
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(106,18,17,0.12) 0%, transparent 60%);
   }
 
   .cross-watermark {
@@ -422,7 +445,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 80%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 60% 60% at 50% 80%, rgba(106,18,17,0.08) 0%, transparent 70%);
   }
 
   .album-cross {
@@ -465,12 +488,12 @@
   }
 
   .album-card:hover .play-icon {
-    background: var(--gold);
-    border-color: var(--gold);
+    background: var(--accent);
+    border-color: var(--accent);
   }
 
   .play-icon svg { transition: stroke 0.3s; }
-  .album-card:hover .play-icon svg path { fill: var(--dark); }
+  .album-card:hover .play-icon svg path { fill: #D9D0C7; }
 
   /* SHOWS */
   .shows-list {
@@ -696,7 +719,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(106,18,17,0.10) 0%, transparent 70%);
   }
   .member-initials {
     font-family: 'Playfair Display', serif;
@@ -826,8 +849,8 @@
   }
   .form-tab:last-child { border-right: none; }
   .form-tab.active {
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--accent);
+    color: #D9D0C7;
     font-weight: 500;
   }
   .form-tab:not(.active):hover { color: var(--gold); }
@@ -881,8 +904,8 @@
     margin-top: 0.5rem;
   }
   .form-submit button {
-    background: var(--gold);
-    color: var(--dark);
+    background: var(--accent);
+    color: #D9D0C7;
     border: none;
     padding: 0.85rem 2.2rem;
     font-family: 'DM Sans', sans-serif;
@@ -935,7 +958,7 @@
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--gold);
+    background: var(--cream);
     transition: transform 0.3s, opacity 0.3s;
     transform-origin: center;
   }
@@ -962,9 +985,8 @@
     /* Nav */
     nav {
       padding: 1rem 1.25rem;
-      background: rgba(12,10,8,0.98);
-    }
-    .nav-links-desktop { display: none; }
+      background: rgba(217,208,199,0.98);
+    }    .nav-links-desktop { display: none; }
     .nav-toggle { display: flex; }
 
     /* Sections */
@@ -1055,8 +1077,8 @@
 <!-- HERO -->
 <div class="hero">
   <svg class="hero-cross" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="265" y="60" width="70" height="480" fill="#C9A84C"/>
-    <rect x="80" y="190" width="440" height="70" fill="#C9A84C"/>
+    <rect x="265" y="60" width="70" height="480" fill="#6A1211"/>
+    <rect x="80" y="190" width="440" height="70" fill="#6A1211"/>
   </svg>
 
   <div class="hero-eyebrow">
@@ -1095,8 +1117,8 @@
       <div class="about-frame-accent"></div>
       <div class="about-frame">
         <img src="https://scontent.ffjr1-5.fna.fbcdn.net/v/t39.30808-6/497633854_1229034405899395_7060721604875884439_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=YLMmpBJ37qQQ7kNvwFy94Gt&_nc_oc=Adp52ZxugnCXd7MlhjhS8zoev9c7aEr0l8C8gqQOm0_sXuq2yiuQeq5N6KqQ7g_Rjdg&_nc_zt=23&_nc_ht=scontent.ffjr1-5.fna&_nc_gid=Nyy80zmNPcj0U78rni5vKQ&_nc_ss=7b2a8&oh=00_Af4tKQ542FK_jrL3FH-feGoC3r1T-qHCCKjFqxIPUS3ntA&oe=6A1F6545" alt="Daniel Gadal" style="width:100%;height:100%;object-fit:cover;">  
-          <rect x="52" y="10" width="16" height="100" fill="#C9A84C"/>
-          <rect x="10" y="42" width="100" height="16" fill="#C9A84C"/>
+          <rect x="52" y="10" width="16" height="100" fill="#6A1211"/>
+          <rect x="10" y="42" width="100" height="16" fill="#6A1211"/>
         </svg>
         <div class="about-quote">
           <p>"Music is not our gift to God — it is God's grace flowing back to Him."</p>
@@ -1129,8 +1151,8 @@
         <div class="album-art">
            <img src="images/Rabbi.jpeg" alt="Debut Album 2010" style="width:100%;height:100%;object-fit:cover;">
 
-         <rect x="28" y="6" width="8" height="52" fill="#C9A84C"/>
-            <rect x="6" y="24" width="52" height="8" fill="#C9A84C"/>
+         <rect x="28" y="6" width="8" height="52" fill="#6A1211"/>
+            <rect x="6" y="24" width="52" height="8" fill="#6A1211"/>
           </svg>
         </div>
         <div class="album-year">2016 · First Album</div>
@@ -1139,7 +1161,7 @@
         <div class="play-icon">
                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
            
-            <path d="M3 2L11 7L3 12V2Z" fill="#C9A84C"/>
+            <path d="M3 2L11 7L3 12V2Z" fill="#6A1211"/>
           </svg>
         </div>
       </div>
@@ -1149,8 +1171,8 @@
       <div class="album-card">
         <div class="album-art">
   <img src="images/Ek.png" alt="" style="width:100%;height:100%;object-fit:cover;">
-            <rect x="28" y="6" width="8" height="52" fill="#C9A84C"/>
-            <rect x="6" y="24" width="52" height="8" fill="#C9A84C"/>
+            <rect x="28" y="6" width="8" height="52" fill="#6A1211"/>
+            <rect x="6" y="24" width="52" height="8" fill="#6A1211"/>
           </svg>
         </div>
         <div class="album-year">2016 · Second Album</div>
@@ -1158,7 +1180,7 @@
         <p class="album-desc">A deeper collection of original Nepali Christian music, followed by multiple EPs, singles, worship songs, and official music videos.</p>
         <div class="play-icon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 2L11 7L3 12V2Z" fill="#C9A84C"/>
+            <path d="M3 2L11 7L3 12V2Z" fill="#6A1211"/>
           </svg>
         </div>
       </div>
@@ -1168,8 +1190,8 @@
       <div class="album-card">
         <div class="album-art">
 <img src="images/Single.png" alt="Judah Plows Single and EPs" style="width:100%;height:100%;object-fit:cover;">            
-            <rect x="28" y="6" width="8" height="52" fill="#C9A84C"/>
-            <rect x="6" y="24" width="52" height="8" fill="#C9A84C"/>
+            <rect x="28" y="6" width="8" height="52" fill="#6A1211"/>
+            <rect x="6" y="24" width="52" height="8" fill="#6A1211"/>
           </svg>
         </div>
         <div class="album-year">Notable Releases</div>
@@ -1177,7 +1199,7 @@
         <p class="album-desc">Bardaan · Bijay · Speak To Me Now · Rabbi · Yeshu Ko Nau · Ek Matra Thuma — songs that have reached Nepal, India, the Middle East, and Nepali communities worldwide.</p>
         <div class="play-icon">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 2L11 7L3 12V2Z" fill="#C9A84C"/>
+            <path d="M3 2L11 7L3 12V2Z" fill="#6A1211"/>
           </svg>
         </div>
       </div>
