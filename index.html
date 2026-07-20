@@ -1015,8 +1015,16 @@
     .members-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
 
     /* Shows */
-    .show-item { grid-template-columns: 60px 1fr; gap: 1rem; padding: 1.4rem 0; }
-    .show-tag { display: none; }
+    .show-item { 
+     grid-template-columns: 60px 1fr 100px;
+     gap: 0.8rem;
+     padding: 1.4rem 0;
+     align-items: center; }
+    .show-tag { width: 100px;
+     height: 28px;
+     font-size: 0.55rem;
+     grid-column: 3;
+     grid-row: 1; }
     .show-date .day { font-size: 1.8rem; }
 
     /* Footer */
