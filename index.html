@@ -1512,7 +1512,7 @@
   const bookingFields = document.getElementById('bookingFields');
   const collabFields = document.getElementById('collabFields');
   const formSubject = document.getElementById('formSubject');
-
+ 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', false); });
@@ -1525,14 +1525,14 @@
       formSubject.value = subjects[type];
     });
   });
-
+ 
   // Form submission via Web3Forms
   document.getElementById('submitBtn').addEventListener('click', async () => {
     const btn = document.getElementById('submitBtn');
     const status = document.getElementById('formStatus');
     const required = document.querySelectorAll('.form-wrapper [required]');
     let valid = true;
-
+ 
     required.forEach(f => {
       f.style.borderColor = '';
       if (!f.value.trim()) {
@@ -1540,25 +1540,25 @@
         valid = false;
       }
     });
-
+ 
     if (!valid) {
       status.textContent = 'Please fill in all required fields.';
       status.className = 'form-status error';
       return;
     }
-
+ 
     btn.disabled = true;
     btn.textContent = 'Sending…';
     status.textContent = '';
     status.className = 'form-status';
-
+ 
     // Collect all named inputs inside .form-wrapper
     const data = {};
     document.querySelectorAll('.form-wrapper input[name], .form-wrapper select[name], .form-wrapper textarea[name]').forEach(el => {
       if (el.type === 'checkbox') return;
       data[el.name] = el.value;
     });
-
+ 
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
